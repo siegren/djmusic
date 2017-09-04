@@ -2,7 +2,7 @@
 
 DJMUSIC is a music composition collaboration application. It has two users, a lyricist and a melodist. I thought of this project because I'm a music lover. There are a lot of musicians out there who are very talented but dont have a chance to showcase their talent. With this app, they will collaborate to other musician and will create a music and share it to the world. It's not finished yet but will be soon.
 
-[Picture](img/djmusic.png)
+![Pcture](https://github.com/siegren/djmusic/blob/master/img/dmusic.png)
 
 ### Features
 - Users can be either a lyricist or a melodist or both.
