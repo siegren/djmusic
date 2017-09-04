@@ -1,0 +1,22 @@
+<div class="form-group">
+  <% if params[:login_error] == '1' %>
+
+<div class="alert alert-danger alert-dismissable fade in">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Login Error!</strong> Invalid email and password combination.
+</div>
+
+  <% end %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <%= f.email_field :email, autofocus: true, class: 'form-control fm-bottom', placeholder: 'Email Address' %>
+
+
+
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control fm-bottom', placeholder: 'Password' %>
+
+      <%= f.submit "Log in", class: 'form-control btn-primary' %>
+
+  <% end %>  
+</div>
+

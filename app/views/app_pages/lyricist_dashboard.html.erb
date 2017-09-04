@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		<div>
+			<%= link_to '<span class="glyphicon glyphicon-plus new-l"></span>'.html_safe, new_lyric_path, class: 'pull-left new' %>
+			<h2 style="margin-left: 50px !important; font-weight: bolder;" >My Lyrics</h2> <br />
+		</div>
+		
+			<% if @lyrics.count == 0 %>
+				<p>No composition yet!</p>
+			<% else %>
+				<table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th>Title</th>
+				        <th>Controls</th>
+					      </tr>
+				    </thead>
+				    <tbody>
+				    <% @lyrics.each do |l| %>
+				      <tr>
+				        <td style="width: 70%;"><%= l.title %></td>
+				        <td><%= link_to 'Edit', edit_lyric_path(l.id) %> | <%= link_to 'Delete', lyric_path(l.id), method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Publish', publish_path(:id => l.id)%> | <%= link_to 'View', audio_path(:lyric_id => l.id)%></td>
+				      </tr>
+				    <% end %>
+				    </tbody>
+				  </table>
+			<% end %>
+		</div>
+	</div>
+</div>

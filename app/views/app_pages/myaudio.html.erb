@@ -1,0 +1,26 @@
+<div class="container">
+<h2 class="text-center">My Audio</h2>
+	<% if @sounds.count  == 0 %>
+	<h3 class="text-center">You haven't uploaded any audio yet.</h3>
+	<h3 class="text-center"><%= link_to 'Go to lyric list', melodist_dashboard_path(:id => current_user.id)%>, choose, and create an audio then upload it. </h3>
+	<% else %>
+	<div class="row">
+	<br />
+	<% @sounds.each do |s| %>
+		<div class="col-lg-3">
+			<% @user = User.find_by(id: s.user_id) %>
+			<div class="audiowr" style="background-image:url('<%= @user.avatar.url %>')">
+<p class="pull-right"><%= link_to '&times;'.html_safe, melody_path(s.id), method: :delete %></p>
+			<button id="<%= s.id %>" class="btnplay" onclick="play_audio(this.id)"><span class="glyphicon glyphicon-play"></span></button></div>
+			<% @lyric = Lyric.find_by(id: s.lyric_id) %>
+			<p class="text-center"><%= @lyric.title %></p>
+			
+			<audio id="audio<%= s.id %>" controls style="display:none">
+          <source src="<%= s.sound.url %>" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+		</div>
+		<% end %>
+</div>
+<% end %>
+</div>

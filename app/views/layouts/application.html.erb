@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Djmusic</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'false' %>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+
+  <body>
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Sign in</h4>
+	      </div>
+	      <div class="modal-body">
+	        <%= render 'devise/sessions/new' %>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+		<!-- Login Modal -->
+	<div id="signupModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Sign up</h4>
+	      </div>
+	      <div class="modal-body">
+	        <%= render 'devise/registrations/new' %>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<% if user_signed_in? %>
+		<!-- Lyricist Modal -->
+	<div id="lyricistModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Be a Lyricist?</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Lyrcist is ... </p>
+	        <%= button_to 'Become a Lyrcist', lyricist_path(:id => current_user.id), class: 'form-control btn-primary' %>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+			<!-- Melodist Modal -->
+	<div id="melodistModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Be a Melodist?</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Melodist is ... </p>
+	        <%= button_to 'Become a Lyrcist', melodist_path(:id => current_user.id), class: 'form-control btn-primary' %>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+		<!-- Vocalist Modal -->
+	<div id="vocalistModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-sm">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Be a Vocalist?</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Vocalist is ... </p>
+	        <%= button_to 'Become a Lyrcist', vocalist_path(:id => current_user.id), class: 'form-control btn-primary' %>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+<% end %>
+	<nav class="navbar navbar-inverse" style="margin: 0px !important">
+	  <div class="container">
+	    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+	      <%= link_to 'DJMUSIC', root_url, class: 'navbar-brand' %>
+	    </div>
+	      <div class="collapse navbar-collapse" id="myNavbar">
+	    <ul class="nav navbar-nav navbar-right">
+   	      <!-- <li><a href="#"><span class="glyphicon glyphicon-search"></span> Browse</a></li> -->
+   	      <% if user_signed_in? %>
+   	      <li>
+   	      	<% if current_user.is_lyricist? %>
+   	      		<%= link_to 'Lyricist Dashboard', lyricist_dashboard_path(:user_id => current_user.id) %>
+   	      	<% else %>
+   	      		<a href="#" data-toggle="modal" data-target="#lyricistModal">Become a Lyricist</a>
+   	      	<% end %>
+   	      </li>
+   	      <li>
+   	      	<% if current_user.is_melodist? %>
+   	      		<%= link_to 'Melodist Dashboard', melodist_dashboard_path(:user_id => current_user.id) %>
+   	      	<% else %>
+   	      		<a href="#" data-toggle="modal" data-target="#melodistModal">Become a Melodist</a>
+   	      	<% end %>
+   	      </li>
+   	
+   	           <li class="dropdown">
+		        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= image_tag current_user.avatar.url(:thumb), class: 'thumb' %>
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		      <!--     <li><a href="#">Page 1-1</a></li> -->
+		          <li><%= link_to "Manage Account", edit_user_registration_path %></li>
+		          <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+		        </ul>
+		      </li>
+   	      
+   	      <% else %>
+	      <li><a href="#" data-toggle="modal" data-target="#signupModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	      <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in" id="login-link"></span> Login</a></li>
+	      <% end %>
+	    </ul>
+	    </div>
+	  </div>
+	</nav>
+    <%= yield %>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <% if params[:login_error] == '1' %>
+    	<script type="text/javascript">
+    		$('#login-link').click();
+
+
+
+
+	
+
+    	</script>
+    <% end %>
+
+  </body>
+</html>

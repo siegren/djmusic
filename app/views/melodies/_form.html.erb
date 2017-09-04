@@ -1,0 +1,30 @@
+<%= form_with(model: melody, local: true) do |form| %>
+  <% if melody.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(melody.errors.count, "error") %> prohibited this melody from being saved:</h2>
+
+      <ul>
+      <% melody.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form.file_field :sound, class: 'form-control' %>  
+  <div class="hide"> 
+  <div class="field">
+    <%= form.label :lyric_id %>
+    <%= form.text_field :lyric_id, id: :melody_lyric_id, value: params[:lyric_id] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :melody_user_id, value: params[:user_id] %>
+  </div>
+</div>
+<br />
+  <div class="actions">
+    <%= form.submit 'Upload Audio', class: 'form-control btn-primary' %>
+  </div>
+<% end %>

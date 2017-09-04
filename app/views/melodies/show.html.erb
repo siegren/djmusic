@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lyric:</strong>
+  <%= @melody.lyric %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @melody.user %>
+</p>
+
+<%= link_to 'Edit', edit_melody_path(@melody) %> |
+<%= link_to 'Back', melodies_path %>

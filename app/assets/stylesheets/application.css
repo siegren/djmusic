@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+    margin: 0px !important;
+}
+
+a:link{
+	color: #000;
+}
+
+a:hover{
+	color: #000;
+	background-color: transparent !important;
+}
+
+a:visited{
+		color: #000;
+}
+ .hide{
+ 	display: none;
+ }
+
+.audiowr{
+	width: 200px;
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	margin: 0 auto;
+}
+
+.vocalist{
+	width: 250px;
+	height: 250px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.btnplay{
+	width: 100%;
+	position:absolute;
+	bottom: 0px;
+}
+
+.profile{
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	background-position: center;
+	margin: 0 auto;
+}
+
+.join{
+	width: 150px !important;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.txtarea{
+	height: 500px !important;
+}
+
+th{
+	background-color: #006699;
+	color: #fff;;
+	font-weight: bolder;
+	font-size: 1.3em;
+}
+
+td{
+	font-size: 1.1em;
+}
+
+.lyrics{
+	font-size: 1.2em;
+}
+
+.song{
+	border-right: 1px solid #000;
+}
+
+.pull-right{
+	color: #fff;
+	font-weight: bolder;
+	font-size: 1em;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+
+}
+
+.pull-right a:link{
+	color: #fff !important;
+}
+
+.pull-right a:hover{
+	text-decoration: none;
+}
+
+.pull-right a:visited{
+	color: #fff !important;
+	background-color: transparent !important;
+}

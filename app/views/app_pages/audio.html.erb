@@ -1,0 +1,42 @@
+<div class="container">
+
+	<div class="row" style="margin-top: 25px;">
+	<div class="col-lg-4 song">
+			<h3 class="text-center"><%= @lyric.title %></h3>
+			<% @user = User.find_by(id: @lyric.user_id) %>
+			<p class="text-center">by: <%= @user.firstname%> <%= @user.lastname%></p><br />
+	<p class="text-center lyrics" ><%= @lyric.content.gsub(/\n/, '<br/>').html_safe  %></p>
+	</div>
+		<div class="col-lg-8">
+			<div class="row">
+	<% if @sounds.count == 0 %>
+	<div class="col-sm-4">
+		<h2>No sounds yet</h2>
+		</div>
+	<% else %>
+
+		<% @sounds.each do |s| %>
+	
+				<div class="col-sm-4">
+								<% @user = User.find_by(id: s.user_id) %>
+								
+			<div class="audiowr" style="background-image:url('<%= @user.avatar.url %>')">
+
+
+			<button id="<%= s.id %>" class="btnplay" onclick="play_audio(this.id)"><span class="glyphicon glyphicon-play"></span></button></div>
+			<audio id="audio<%= s.id %>" controls style="display:none">
+          <source src="<%= s.sound.url %>" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+<p class="text-center">Contributed by <%= @user.firstname %> <%= @user.lastname %></p>
+				</div>
+			
+
+
+		<% end %>
+		</div>
+				</div>
+	<% end %>
+	</div>
+
+</div>

@@ -1,0 +1,58 @@
+
+  <div class="jumbotron" style="background-image:url('assets/bg3.jpg')">
+  	<div class="container">
+  		<h1 class="text-center" style="margin-top: 100px;">Join DJMUSIC</h1> 
+    		<p class="text-center">DJMUSIC is a music composition collaboration app.</p> 
+    		<p class="text-center">Be a lyricist or a melodist and let's create music.</p>
+
+  		   
+
+    		
+<% if !user_signed_in? %>
+    		<a href="#" data-toggle="modal" data-target="#signupModal"><button class="btn-primary form-control join" style="background-color: #000; border-color: #000;">Join Now</button></a>
+ <% end %>
+  	</div>
+
+ </div>
+
+ <div class="container">
+ 	<h2 class="text-center" style="color: #000; font-weight: bolder; padding: 10px;">Featured Songs</h2>
+ <div class="row">
+
+ 	<div class="col-lg-4">
+ 		<div class="audiowr" style="background-image:url('assets/bg.jpg')">
+			<button id="1" class="btnplay" onclick="play_audio(this.id)"><span class="glyphicon glyphicon-play"></span></button></div>
+			<audio id="audio1" controls style="display:none">
+          <source src="assets/Hesus by Daniel Mayona.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+<p class="text-center">Hesus by John Smith</p>
+				</div>
+
+				 	<div class="col-lg-4">
+ 		<div class="audiowr" style="background-image:url('assets/bg.jpg')">
+			<button id="1" class="btnplay" onclick="play_audio(this.id)"><span class="glyphicon glyphicon-play"></span></button></div>
+			<audio id="audio1" controls style="display:none">
+          <source src="assets/Hesus by Daniel Mayona.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+<p class="text-center">Hesus by John Smith</p>
+				</div>
+
+				 	<div class="col-lg-4">
+ 		<div class="audiowr" style="background-image:url('assets/bg.jpg')">
+			<button id="1" class="btnplay" onclick="play_audio(this.id)"><span class="glyphicon glyphicon-play"></span></button></div>
+			<audio id="audio1" controls style="display:none">
+          <source src="assets/Hesus by Daniel Mayona.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+<p class="text-center">Hesus by John Smith</p>
+				</div>
+ </div>
+ </div>
+
+
+
+
+
+  
